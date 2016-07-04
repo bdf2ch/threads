@@ -9,6 +9,9 @@ package threads;
 
 import javax.swing.JFrame;
 import javax.swing.*;
+import java.awt.*;
+
+        
 
 /**
  *
@@ -16,19 +19,24 @@ import javax.swing.*;
  */
 public class ThreadsApp extends JFrame {
     JSpinner spinner;
+    JPanel controlPanel;
+    JButton startServerButton;
+    JButton stopServerButton;
+    MainFrame frame;
+    Server server;
     
     public ThreadsApp () {
         super("Многопоточное приложение на Java");
         setBounds(0, 0, 500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         
-        SpinnerModel spinnerModel =
-         new SpinnerNumberModel(10, //initial value
-            0, //min
-            100, //max
-            1);//step
-      JSpinner spinner = new JSpinner(spinnerModel);
-      add(spinner);
+        //SpinnerModel spinnerModel =
+        // new SpinnerNumberModel(10, //initial value
+        //    0, //min
+        //    100, //max
+        //    1);//step
+      //JSpinner spinner = new JSpinner(spinnerModel);
+      //add(spinner);
     }
     
     
@@ -59,10 +67,16 @@ public class ThreadsApp extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        //JFrame.setDefaultLookAndFeelDecorated(true);
-        ThreadsApp app = new ThreadsApp();
-        app.setVisible(true);
+    public static void main(String[] args) {             
+        MainFrame frame = new MainFrame();
+        frame.setTitle("Многопоточный сервер");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+        frame.setPreferredSize(new Dimension(400, 400));             
+        frame.setVisible(true);     
+        
+        
+        //DefaultTableModel model = (DefaultTableModel) table.getModel();
+        frame.addMessage("1270.0.1", "0", "Сервер запущен");
     }
     
 }
